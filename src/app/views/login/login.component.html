@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <form class="login">
+                    <div class="login__field">
+                        <div class="card flex justify-center">
+                            <p-floatlabel variant="on">
+                                <input pInputText id="on_label" autocomplete="off" />
+                                <label for="on_label">Usuario</label>
+                            </p-floatlabel> 
+                        </div>
+                    </div>
+                    <div class="login__field">
+                        <div class="card flex justify-center">
+                            <p-floatlabel variant="on">
+                                <p-password [feedback]="false" />
+                                <label for="on_label">Contraseña</label>
+                            </p-floatlabel>
+                        </div>
+                    </div>
+                    <button class="button login__submit">
+                        <span class="button__text">Iniciar sesion</span>
+                    </button>				
+                </form>
+                <div class="social-login">
+                    <h3>Eden Sky</h3>
+                </div>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__medio"></span>		
+                <span class="screen__background__shape screen__background__superior"></span>
+                <span class="screen__background__shape screen__background__login"></span>
+            </div>		
+        </div>
+    </div>
+
+</body>
+</html>
