@@ -10,6 +10,9 @@ import { IftaLabelModule } from 'primeng/iftalabel';
 import { ButtonModule } from 'primeng/button';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 //importaciones para formularios reactivos
 import { FormControl, FormGroup, ReactiveFormsModule, Validators,FormsModule, FormBuilder } from '@angular/forms';
 
@@ -29,6 +32,7 @@ import { ToastModule } from 'primeng/toast';
 
 //Llamamos los servicios de la API
 import { ApiTestsService } from '../../core/services/api-tests.service';
+import { LoginService } from '../../core/services/LoginService/login.service';
 
 @Component({
   selector: 'app-login',
@@ -50,49 +54,60 @@ import { ApiTestsService } from '../../core/services/api-tests.service';
     ,ReactiveFormsModule
     ,RouterLink,RouterOutlet
 ],
-providers:[ConfirmationService,MessageService],
+providers:[ConfirmationService,MessageService,LoginService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
 
-  empleados: any[] = [];
+  public credencialesErroneas : any;
+  public token:any;
+  public role:any;
 
-  iniciarSesion = new FormGroup({
-    usuario: new FormControl('',Validators.required),
-    contrasena: new FormControl('', Validators.required),
+
+  ForminiciarSesion = new FormGroup({
+    username: new FormControl('',Validators.required),
+    password: new FormControl('', Validators.required),
   });
 
   // definimos el constructor para llamar la confirmacion y el mensaje
   constructor(
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private serviceApiTest: ApiTestsService
+    private serviceApiTest: ApiTestsService,
+    private loginService: LoginService,
+    public _Router: Router,
+    public _ActivadedRoute: ActivatedRoute
   ){}
-  
-  private titulo = 'titulo componente login';
-  private getTituloII = 'Titulo obtenido desde el metodo regular get'
 
   ngOnInit(): void {
-    this.serviceApiTest.errorAPITest().subscribe((data)=>{
-      this.empleados = data;
-      console.log(this.empleados)
-    });
   }
 
-  enviarFormulario(){
+  iniciarSesion(){
+    console.log(this.ForminiciarSesion.value)
+    this.loginService.setLoginUser(this.ForminiciarSesion.value).subscribe(
+      res => {
+        if (res.status == true) {
+          this.token = res.data.token
+          this.role = res.data.role
+          localStorage.setItem('token',this.token)
+          localStorage.setItem('role',this.role)
+          this.loginService.setLoginUser(this.ForminiciarSesion.value,<any>true).subscribe(
+            res => {
+              console.log(res);
+              this._Router.navigate(['/Dashboardbarber']);
+            }
+          )
+        }
+        console.log(res)
+      },
 
-    console.log(this.iniciarSesion.value['usuario'])
-    console.log(this.iniciarSesion.value['contrasena'])
-  }
-
-  //Metodo getter de typescript
-  get mostrarTitulo(){
-    return this.titulo;
-  }
-
-  getTitulo(){
-    return this.getTituloII
+      err => {
+        console.log(err)
+        this.credencialesErroneas = err.error.message
+        alert(this.credencialesErroneas)
+      }
+    )
   }
 
   confirm1(event: Event){

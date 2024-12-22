@@ -10,27 +10,27 @@
     <div class="container">
         <div class="screen">
             <div class="screen__content">
-                <form class="login" [formGroup]="iniciarSesion" (ngSubmit)="enviarFormulario()">
+                <form class="login" [formGroup]="ForminiciarSesion" (ngSubmit)="iniciarSesion()">
                     <div class="login__field">
                         <div class="card flex justify-center">
                             <p-floatlabel variant="on">
-                                <input pInputText id="on_label" formControlName="usuario" autocomplete="off" />
+                                <input pInputText id="on_label" formControlName="username" autocomplete="off" />
                                 <label for="on_label">Usuario</label>
                             </p-floatlabel> 
-                            <p>usuario: {{ iniciarSesion.value.usuario }}</p>
+                            <p>usuario: {{ ForminiciarSesion.value.username }}</p>
                         </div>
                     </div>
                     <div class="login__field">
                         <div class="card flex justify-center">
                             <p-floatlabel variant="on">
-                                <p-password [feedback]="false" formControlName="contrasena"/>
+                                <p-password [feedback]="false" formControlName="password"/>
                                 <label for="on_label" >Contraseña</label>
                             </p-floatlabel>
-                            <p>Contrasena: {{ iniciarSesion.value.contrasena }}</p>
+                            <p>Contrasena: {{ ForminiciarSesion.value.password }}</p>
                         </div>
                     </div>
-                    <button [disabled]="!iniciarSesion.valid" class="button login__submit">
-                        <span class="button__text" routerLink="/Dashboardbarber">Iniciar sesion</span>
+                    <button [disabled]="!ForminiciarSesion.valid" class="button login__submit">
+                        <span class="button__text">Iniciar sesion</span>
                     </button>
                 </form>
                 <div class="social-login">
@@ -44,16 +44,7 @@
             </div>		
         </div>
 
-        <ul>
-            <h3>{{empleados}}</h3>
-            @if(empleados.length > 0){
-                @for (empleado of empleados; track empleado.id) {
-                    <li>{{empleado.name}}</li>
-                }
-            }@else {
-                <li>No hay usuarios Disponibles</li>
-            }
-        </ul>
+    
     </div>
 </body>
 </html>

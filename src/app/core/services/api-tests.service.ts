@@ -11,22 +11,21 @@ import { API } from '../Api/api.service';
   providedIn: 'root'
 })
 export class ApiTestsService {
-  private mensaje: string = "Hola desde el servicio de API";
 
-  //Variable que contiene el llamado al Endpoint de TEST
-  private urlTest: string;
+  //Variable que contiene el llamado al Endpoint del backend
+  private url: string;
 
   constructor(
     private http: HttpClient
   ) {
-    this.urlTest = API.url
+    this.url = API.url
   }
 
   errorAPITest(): Observable<any>{
-    return this.http.get(this.urlTest + 'test-response-error');
+    return this.http.get(this.url + 'health-checks/test-response-error');
   }
 
-  obtenerMensaje():  string{
-    return this.mensaje
-  }
+
+
+
 }
