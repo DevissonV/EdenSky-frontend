@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
-
+@import "primeicons/primeicons.css";
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -73,6 +73,9 @@
 	border-radius: 32px;
 }
 
+input{
+	width: 85%;
+}
 
 .login {
 	width: 320px;

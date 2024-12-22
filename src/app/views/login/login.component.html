@@ -6,33 +6,35 @@
     <title>Document</title>
 </head>
 <body>
-
+    
     <div class="container">
         <div class="screen">
             <div class="screen__content">
-                <form class="login">
+                <form class="login" [formGroup]="iniciarSesion" (ngSubmit)="enviarFormulario()">
                     <div class="login__field">
                         <div class="card flex justify-center">
                             <p-floatlabel variant="on">
-                                <input pInputText id="on_label" autocomplete="off" />
+                                <input pInputText id="on_label" formControlName="usuario" autocomplete="off" />
                                 <label for="on_label">Usuario</label>
                             </p-floatlabel> 
+                            <p>usuario: {{ iniciarSesion.value.usuario }}</p>
                         </div>
                     </div>
                     <div class="login__field">
                         <div class="card flex justify-center">
                             <p-floatlabel variant="on">
-                                <p-password [feedback]="false" />
-                                <label for="on_label">Contraseña</label>
+                                <p-password [feedback]="false" formControlName="contrasena"/>
+                                <label for="on_label" >Contraseña</label>
                             </p-floatlabel>
+                            <p>Contrasena: {{ iniciarSesion.value.contrasena }}</p>
                         </div>
                     </div>
-                    <button class="button login__submit">
-                        <span class="button__text">Iniciar sesion</span>
-                    </button>				
+                    <button [disabled]="!iniciarSesion.valid" class="button login__submit">
+                        <span class="button__text" routerLink="/Dashboardbarber">Iniciar sesion</span>
+                    </button>
                 </form>
                 <div class="social-login">
-                    <h3>Eden Sky</h3>
+                    <h3>Eden Sky Barber</h3>
                 </div>
             </div>
             <div class="screen__background">
@@ -41,7 +43,17 @@
                 <span class="screen__background__shape screen__background__login"></span>
             </div>		
         </div>
-    </div>
 
+        <ul>
+            <h3>{{empleados}}</h3>
+            @if(empleados.length > 0){
+                @for (empleado of empleados; track empleado.id) {
+                    <li>{{empleado.name}}</li>
+                }
+            }@else {
+                <li>No hay usuarios Disponibles</li>
+            }
+        </ul>
+    </div>
 </body>
 </html>
