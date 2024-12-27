@@ -10,21 +10,15 @@ export class LoginService {
 
   //Variable que contiene el llamado al Endpoint del backend
   private url: string;
+  public token: any;
 
 
   constructor(
+    //le pasamos el modulo HttpClient para poder hacer peticiones http
     private http : HttpClient
   ) {
+    //le pasamos la url del endpoint
     this.url = API.url
-  }
-
-  loginService(Usuario:any):Observable<any>{
-    
-    let parametros = JSON.stringify(Usuario)
-    let headers = new HttpHeaders({
-      'Content-Type':'Application/json'
-    })
-    return this.http.post(this.url + 'users/login',parametros,{headers})
   }
 
   setLoginUser(usuario:any, gettoken=null):Observable<any>{
@@ -44,5 +38,17 @@ export class LoginService {
 
     //Retornamos el llamado al endpoint con sus parametros y cabeceras
     return this.http.post(this.url + 'users/login',parametros,{headers})
+  }
+
+  getToken(){
+    let token = localStorage.getItem('token');
+
+    if (token && token != undefined) {
+      this.token = token;
+    }else{
+      this.token = null; 
+    }
+
+    return this.token; 
   }
 }
