@@ -29,10 +29,15 @@
                             <p>Contrasena: {{ ForminiciarSesion.value.password }}</p>
                         </div>
                     </div>
-                    <button [disabled]="!ForminiciarSesion.valid" class="button login__submit">
+                    <button  class="button login__submit">
                         <span class="button__text">Iniciar sesion</span>
                     </button>
                 </form>
+
+                <div class="BtnRegister">
+                    <button id="BtnRegisterApp" (click)="newRegister('barbero')" routerLink="/newRegister">Soy un barbero</button>
+                    <Button id="BtnRegisterApp" (click)="newRegister('cliente')" routerLink="/newRegister">Soy un cliente</Button>                </div>
+                
                 <div class="social-login">
                     <h3>Eden Sky Barber</h3>
                 </div>
@@ -43,7 +48,6 @@
                 <span class="screen__background__shape screen__background__login"></span>
             </div>		
         </div>
-
     
     </div>
 </body>

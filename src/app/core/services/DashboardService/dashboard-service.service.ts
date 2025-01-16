@@ -30,12 +30,6 @@ export class DashboardServiceService {
   }
 
   getAllEmployee(token:any): Observable<any>{
-    console.log(token);
-    /** le pasamos el tipo de cabecera que va utilizar para que pueda ser leida por el backend */
-    //let headers = new HttpHeaders().set('Authorization','Bearer Token'+token);
-    let headers = new HttpHeaders().set('Content-Type','application/json').set('Authorization','Bearer '+token);
-
-    //Retornamos el llamado al endpoint con sus parametros y cabeceras
-    return this.http.get(this.url + 'employees/get-employees',{ headers: headers });
+    return this.http.get(this.url + 'employees/get-employees');
   }
 }

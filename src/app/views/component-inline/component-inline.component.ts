@@ -4,7 +4,12 @@ import { Component } from '@angular/core';
   selector: 'app-component-inline',
   imports: [],
   template: `
-    <h1>{{TituloComponenteInline}}</h1>
+    <ul [class]="listClasses">prueba listClasses</ul>
+    <section [class]="sectionClasses">prueba section</section>
+    <button [class]="buttonClasses" [style]="buttonStyles"> botones </button>
+
+    <!-- Manejo eventos angular -->
+     <button (click)="getConsole()"> click! </button>
   `,
   styles: `
     h1{
@@ -13,5 +18,19 @@ import { Component } from '@angular/core';
   `
 })
 export class ComponentInlineComponent {
-  TituloComponenteInline = 'Componente Inline'
+  listClasses = 'full-width outlined';
+  sectionClasses = ['expandable', 'elevated'];
+  buttonClasses = {
+    highlighted: true,
+    embiggened: false,
+  };
+  buttonStyles = {
+    border: '1px solid black',
+    'font-weight': 'bold',
+  };
+
+  //Manejo eventos angular
+  getConsole(){
+    console.log('click en boton, funciona corretcamente'); 
+  }
 }
