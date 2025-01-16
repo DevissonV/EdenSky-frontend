@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import { API } from '../../Api/api.service';
+import {environmentDevelop} from '../../../../environments/environment.development';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { LoginComponent } from '../../../auth/components/login/login.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  decodeToken(): any {
+    throw new Error('Method not implemented.');
+  }
 
   //Variable que contiene el llamado al Endpoint del backend
   private url: string;
   public token: any;
+  public role:any;
 
 
   constructor(
@@ -18,7 +23,7 @@ export class LoginService {
     private http : HttpClient
   ) {
     //le pasamos la url del endpoint
-    this.url = API.url
+    this.url = environmentDevelop.url
   }
 
   setLoginUser(usuario:any, gettoken=null):Observable<any>{
@@ -35,7 +40,7 @@ export class LoginService {
     let headers = new HttpHeaders({
       'Content-Type':'Application/json'
     })
-
+    
     //Retornamos el llamado al endpoint con sus parametros y cabeceras
     return this.http.post(this.url + 'users/login',parametros,{headers})
   }
@@ -50,5 +55,9 @@ export class LoginService {
     }
 
     return this.token; 
+  }
+
+  logout(){
+    
   }
 }

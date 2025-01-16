@@ -1,11 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Sigue</h2>
-</body>
-</html>
+@defer () {
+    <button>Nuevo Empleado</button>
+    <div class="card">
+        <p-table [columns]="cols" [value]="listAllEmployee" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template #header let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{ col.header }}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        {{ rowData[col.field] }}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+}@placeholder {
+    <p>placeholder</p>
+}@loading {
+    <p>loading</p>
+}@error {
+    <p>error</p>
+}

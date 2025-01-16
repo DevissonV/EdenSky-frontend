@@ -1,0 +1,17 @@
+@defer () {
+<p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000" position="left" [modal]="false">
+    <h1 style="font-weight:normal">Menu</h1>
+    <ul>
+      <li *ngFor="let item of menuItems">
+        <a [routerLink]="item.routerLink">
+          <i [class]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+</p-sidebar>
+}@placeholder {
+
+}@error {
+
+}

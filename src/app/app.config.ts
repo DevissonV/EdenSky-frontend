@@ -6,7 +6,7 @@ import Aura from '@primeng/themes/aura';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { interceptor } from './core/Services/Interceptor/interceptor';
+import { interceptor } from '../app/core/interceptors/interceptor'; 
 
 export const appConfig: ApplicationConfig = {
   providers: [
