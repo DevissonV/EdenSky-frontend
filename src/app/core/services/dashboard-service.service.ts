@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { API } from '../../Api/api.service';
+import { environmentDevelop } from '../../../environments/environment.development';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -16,7 +17,7 @@ export class DashboardServiceService {
     private http : HttpClient
   ) {
     //le pasamos la url del endpoint
-    this.url = API.url
+    this.url = environmentDevelop.url
   }
 
   getToken() {

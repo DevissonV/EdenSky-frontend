@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DashboardServiceService } from '../../core/services/DashboardService/dashboard-service.service';
+import { DashboardServiceService } from '../../core/services/dashboard-service.service';  
 
 import { ActivatedRoute, Router } from '@angular/router';
 

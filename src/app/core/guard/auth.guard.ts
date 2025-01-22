@@ -1,5 +1,5 @@
 import { CanMatchFn, GuardResult, MaybeAsync } from '@angular/router';
-import { LoginService } from '../services/LoginService/login.service';
+import { LoginService } from '../services/login.service';
 import { inject } from '@angular/core';
 import { map } from 'rxjs';
 

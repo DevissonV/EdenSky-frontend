@@ -1,0 +1,46 @@
+@defer () {
+    @if (tipoRegistro == 'barbero') {
+        <form class="login" [formGroup]="FrmRegister" (ngSubmit)="newRegister()">
+            <div class="register__field">
+                <div class="card flex justify-center">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="on_label" formControlName="username" autocomplete="off" />
+                        <label for="on_label">Usuario</label>
+                    </p-floatlabel> 
+                </div>
+            </div>
+
+            <div class="login__field">
+                <div class="card flex justify-center">
+                    <p-floatlabel variant="on">
+                        <p-password [feedback]="false" formControlName="password"/>
+                        <label for="on_label" >Contraseña</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+
+            <div class="register__field">
+                <div class="card flex justify-center">
+                    <p-floatlabel variant="on">
+                        <input pInputText id="on_label" formControlName="role" autocomplete="off" />
+                        <label for="on_label">Rol usuario</label>
+                    </p-floatlabel> 
+                </div>
+            </div>
+
+            <button  class="button login__submit">
+                <span class="button__text">Registrar</span>
+            </button>
+        </form>
+        <button (click)="salirBarbero()">salir, {{tipoRegistro}}</button>
+    }
+    @else if(tipoRegistro == 'cliente') {
+        <button (click)="salirCliente()">salir, {{tipoRegistro}}</button>
+    }
+}@placeholder {
+    <h1>Cargando formularios</h1>
+}@error {
+
+}
+
+

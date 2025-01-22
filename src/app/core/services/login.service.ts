@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {environmentDevelop} from '../../../../environments/environment.development';
+import { environmentDevelop } from '../../../environments/environment.development';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { LoginComponent } from '../../../auth/components/login/login.component';
+import { LoginComponent } from '../../views/login/login.component';
 
 @Injectable({
   providedIn: 'root'

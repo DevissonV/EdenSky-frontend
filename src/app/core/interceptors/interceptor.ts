@@ -1,7 +1,7 @@
 import { Inject, inject, Injectable, Type } from '@angular/core';
 import { HttpEvent,HttpHandlerFn, HttpInterceptorFn,HttpRequest } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { LoginService } from '../services/LoginService/login.service';
+import { LoginService } from '../../core/services/login.service';
 import { Router } from '@angular/router';
 
 export const interceptor: HttpInterceptorFn = (

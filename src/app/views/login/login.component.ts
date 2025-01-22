@@ -3,7 +3,7 @@ import { Component,input,OnInit } from '@angular/core';
 import { Input, output } from '@angular/core';
 
 //importamos el componente dashboard
-import { DashboardComponent } from '../../../views/dashboard/dashboard.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 import { jwtDecode } from 'jwt-decode';
 
@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
 //importaciones para formularios reactivos
-import { FormControl, FormGroup, ReactiveFormsModule, Validators,FormsModule, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators,FormsModule } from '@angular/forms';
 
 //Importaciones para la navegacion entre componentes
 import { RouterLink,RouterOutlet } from '@angular/router';
@@ -37,9 +37,9 @@ import { IftaLabelModule } from 'primeng/iftalabel';
 import { ButtonModule } from 'primeng/button';
 
 //Llamamos los servicios de la API
-import { LoginService } from '../../../core/services/LoginService/login.service';
+import { LoginService } from '../../core/services/login.service';
 import { NewregisterComponent } from "../newregister/newregister.component";
-import { DataService } from '../../../core/services/shared/data.service';
+import { DataService } from '../../shared/services/data.service';
 
 //interface para decodificar el token y acceder a sus id, username y rol
 interface DecodedToken {
